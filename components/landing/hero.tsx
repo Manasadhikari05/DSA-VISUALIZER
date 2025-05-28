@@ -32,7 +32,7 @@ export const Hero = () => (
             </p>
           </div>
           <div className="flex flex-row gap-4">
-            <Link href="https://github.com/yourusername/ds-visualizer">
+            <Link href="https://github.com/Manasadhikari05">
               <Button className="gap-4" variant="outline">
                 View on GitHub <Github className="w-4 h-4" />
               </Button>
@@ -42,7 +42,17 @@ export const Hero = () => (
                 Visualizer <MoveRight className="hidden sm:block w-4 h-4" />
               </RainbowButton>
             </Link>
+            <Link href="http://127.0.0.1:5000">
+              <RainbowButton className="w-full">
+                Compile Your dsl based Code <MoveRight className="hidden sm:block w-4 h-4" />
+              </RainbowButton>
+            </Link>
           </div>
+          <Link href="https://basiccompiler-iuj6pfph4ylodc6spykmxi.streamlit.app/">
+              <RainbowButton className="w-full">
+                Compile Your C language Code <MoveRight className="hidden sm:block w-4 h-4" />
+              </RainbowButton>
+            </Link>
         </div>
         <div className="relative aspect-video rounded-lg overflow-hidden border">
           <Image

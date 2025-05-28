@@ -25,9 +25,10 @@ export default function CustomEdge({
       id={id} 
       path={edgePath} 
       style={{
-        stroke: '#fff',
+        stroke: '#555',   // dull gray stroke
         strokeWidth: 2,
       }}
+      markerEnd="url(#arrowhead)"  // add arrowhead here
     />
   )
 } 

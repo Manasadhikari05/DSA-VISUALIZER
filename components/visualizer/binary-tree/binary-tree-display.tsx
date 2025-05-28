@@ -30,12 +30,10 @@ export function BinaryTreeDisplay({ tree, highlightedNodes }: BinaryTreeDisplayP
   const [reactFlowInstance, setReactFlowInstance] = useState<ReactFlowInstance | null>(null)
   const { theme } = useTheme()
 
-  // Handle flow instance initialization
   const onInit = useCallback((flowInstance: ReactFlowInstance) => {
     setReactFlowInstance(flowInstance)
   }, [])
 
-  // Auto-fit view whenever nodes change
   const fitView = useCallback(() => {
     if (reactFlowInstance) {
       setTimeout(() => {
@@ -87,11 +85,12 @@ export function BinaryTreeDisplay({ tree, highlightedNodes }: BinaryTreeDisplayP
           target: node.id,
           type: 'default',
           style: { 
-            stroke: theme === 'dark' ? '#ffffff' : '#000000',
+            stroke: theme === 'dark' ? '#aaa' : '#555', // dull colors
             strokeWidth: 1.5,
-            opacity: 0.5,
+            opacity: 0.7,
           },
           animated: highlightedNodes.includes(node.id),
+          markerEnd: 'url(#arrowhead)',  // <-- arrow added here
         })
       }
 
@@ -120,7 +119,7 @@ export function BinaryTreeDisplay({ tree, highlightedNodes }: BinaryTreeDisplayP
     setNodes(newNodes)
     setEdges(newEdges)
     fitView()
-  }, [tree, highlightedNodes, setNodes, setEdges, fitView])
+  }, [tree, highlightedNodes, setNodes, setEdges, fitView, theme])
 
   return (
     <div className="w-full h-[600px] bg-background rounded-lg overflow-hidden">
@@ -142,8 +141,22 @@ export function BinaryTreeDisplay({ tree, highlightedNodes }: BinaryTreeDisplayP
         proOptions={{ hideAttribution: true }}
         className="transition-all duration-300" 
       >
+        <defs>
+          <marker
+            id="arrowhead"
+            markerWidth="10"
+            markerHeight="7"
+            refX="10"
+            refY="3.5"
+            orient="auto"
+            markerUnits="strokeWidth"
+          >
+            <path d="M0,0 L10,3.5 L0,7 Z" fill={theme === 'dark' ? '#aaa' : '#555'} />
+          </marker>
+        </defs>
+
         <Background 
-          color={theme === 'dark' ? '#ffffff' : '#000000'} 
+          color={theme === 'dark' ? '#aaa' : '#555'} 
           gap={12} 
           size={1} 
         />  

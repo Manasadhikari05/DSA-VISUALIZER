@@ -14,6 +14,7 @@ import { AVLTreeNode } from './types'
 import TreeNode from '../binary-tree/tree-node'
 import { useEffect, useCallback, useState } from 'react'
 import { useTheme } from 'next-themes'
+import CustomEdge from './CustomEdge'  // <-- import custom edge
 
 interface AVLTreeDisplayProps {
   tree: AVLTreeNode | null
@@ -22,6 +23,10 @@ interface AVLTreeDisplayProps {
 
 const nodeTypes = {
   treeNode: TreeNode,
+}
+
+const edgeTypes = {             // <-- add edgeTypes with custom edge
+  custom: CustomEdge,
 }
 
 export function AVLTreeDisplay({ tree, highlightedNodes }: AVLTreeDisplayProps) {
@@ -84,7 +89,7 @@ export function AVLTreeDisplay({ tree, highlightedNodes }: AVLTreeDisplayProps) 
           id: `${parentId}->${node.id}`,
           source: parentId,
           target: node.id,
-          type: 'default',
+          type: 'custom',                 // <-- changed to 'custom'
           style: { 
             stroke: theme === 'dark' ? '#ffffff' : '#000000',
             strokeWidth: 1.5,
@@ -130,6 +135,7 @@ export function AVLTreeDisplay({ tree, highlightedNodes }: AVLTreeDisplayProps) 
         onEdgesChange={onEdgesChange}
         onInit={onInit}
         nodeTypes={nodeTypes}
+        edgeTypes={edgeTypes}               
         fitView
         fitViewOptions={{
           padding: 0.2,
@@ -159,7 +165,23 @@ export function AVLTreeDisplay({ tree, highlightedNodes }: AVLTreeDisplayProps) 
             border: '1px solid rgba(255, 255, 255, 0.1)'
           }}
         />
+
+        {/* SVG arrowhead marker */}
+        <defs>
+          <marker
+            id="arrowhead"
+            markerWidth="10"
+            markerHeight="7"
+            viewBox="0 0 10 10"
+            refX="10"
+            refY="5"
+            orient="auto"
+            markerUnits="strokeWidth"
+          >
+            <path d="M 0 0 L 10 5 L 0 10 z" fill="#fff" />
+          </marker>
+        </defs>
       </ReactFlow>
     </div>
   )
-} 
+}

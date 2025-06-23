@@ -37,12 +37,12 @@ export const Hero = () => (
                 View on GitHub <Github className="w-4 h-4" />
               </Button>
             </Link>
-          </div>
-          <Link href="https://basiccompiler-iuj6pfph4ylodc6spykmxi.streamlit.app/">
+            <Link href="/visualizer">
               <RainbowButton className="w-full">
-                Compile Your C language Code <MoveRight className="hidden sm:block w-4 h-4" />
+                Visualizer <MoveRight className="hidden sm:block w-4 h-4" />
               </RainbowButton>
             </Link>
+          </div>
         </div>
         <div className="relative aspect-video rounded-lg overflow-hidden border">
           <Image

@@ -37,16 +37,6 @@ export const Hero = () => (
                 View on GitHub <Github className="w-4 h-4" />
               </Button>
             </Link>
-            <Link href="/visualizer">
-              <RainbowButton className="w-full">
-                Visualizer <MoveRight className="hidden sm:block w-4 h-4" />
-              </RainbowButton>
-            </Link>
-            <Link href="https://dsl-based-interpreter0122.vercel.app/">
-              <RainbowButton className="w-full">
-                Compile Your dsl based Code <MoveRight className="hidden sm:block w-4 h-4" />
-              </RainbowButton>
-            </Link>
           </div>
           <Link href="https://basiccompiler-iuj6pfph4ylodc6spykmxi.streamlit.app/">
               <RainbowButton className="w-full">
